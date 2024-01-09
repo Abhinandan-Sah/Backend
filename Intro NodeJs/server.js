@@ -1,7 +1,10 @@
-let n=5;
+// let n=5;
 
-for(let i=1; i<=n; i++){
-    console.log("Hello", i);
-}
+// for(let i=1; i<=n; i++){
+//     console.log("Hello", i);
+// }
 
-console.log("Bye!!");
+// console.log("Bye!!");
+
+const someValue = require("./math");
+console.log(someValue);
