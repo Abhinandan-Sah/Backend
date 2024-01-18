@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roll Dice</title>
+    <link rel="stylesheet" href="">
+</head>
+<body style="background-color: pink;">
+    <h1>Dice gave:
+        <%= //  Math.floor(Math.random() * 6) + 1
+        diceVal %>
+        <%
+            
+            if(diceVal == 6){
+         %>
+            <h2> Nice! Roll dice again. </h2>
+         <% } %>
+    </h1>
+
+    <%- include("includes/footer.ejs") %>
+
+</body>
+</html>
