@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const port = 8080;
 const path = require("path");
+const { v4: uuidv4 } = require('uuid');
+uuidv4();  // => '1b9dbcd-bbdf-4b2sd-9b5d-ab8fin3ns8d'
 
 app.use(express.urlencoded({extended: true}));
 
@@ -12,17 +14,17 @@ app.use(express.static(path.join(__dirname, "public")));
 
 let posts = [
     {
-        id : "1a",
+        id : uuidv4(),
         username : "AbhinandanSah",
         content : "I believe in Bhagwan"
     },
     {
-        id : "2b",
+        id : uuidv4(),
         username : "GauravPathak",
         content : "I love working with data"
     },
     {
-        id : "3c",
+        id : uuidv4(),
         username : "Satyam",
         content : "DevOps is my heart" 
     }
@@ -37,8 +39,9 @@ app.get("/posts/new", (req, res) =>{
 });
 
 app.post("/posts", (req, res) => {
-    let {username, content} = body.params;
-    posts.push({username, content});
+    let {username, content} = req.body;
+    let id =uuidv4();
+    posts.push({id, username, content});
     // res.send("Your post have been receive successfully");
     res.redirect("/posts");
 });
@@ -49,6 +52,12 @@ app.get("/posts/:id", (req, res) => {
     // console.log(post);
     // res.send("Request is working");
     res.render("show.ejs", {post});
+});
+
+app.patch("/posts/:id", (req, res) => {
+    let {id} = req.params;
+    console.log(id);
+    res.send("Patch request working");
 });
 
 app.listen(port, () => {
