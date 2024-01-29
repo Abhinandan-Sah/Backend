@@ -7,11 +7,18 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <h1> Here is your post in detail</h1>
+    <div class="container" style="background-color: blanchedalmond;">
+        <h1 style="text-decoration: underline;"> Here is your post in detail</h1>
     <p>Post id: <%= post.id %> </p>
     <div class="post">
         <h3 class="username"> @<%= post.username %> </h3>
         <h4 class="content"> <%= post.content %> </h4>
+        <form action="/posts">
+            <button>Home</button>
+        </form>
     </div>
+
+    </div>
+    
 </body>
 </html>

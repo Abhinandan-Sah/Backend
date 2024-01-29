@@ -5,20 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>All Posts</title>
     <link rel="stylesheet" href="/style.css" />
+
   </head>
   <body>
     <h1>Quora Posts</h1>
-
+    <% let index = 1; %>
     <% for(post of posts){ %>
     <div class="post">
-      <h3 class="username">@<%= post.username %></h3>
-      <h4 class="content"><%= post.content %></h4>
+      <h3 class="username"> <span style="text-decoration: none;"><%= index %>) </span><% index++; %> @<%= post.username %></h3>
+      <h4 class="content">=> <%= post.content %></h4>
 
-      <a href="http://localhost:8080/posts/<%=post.id%>">See in Detail</a>
+      <div class="animated-button1" ><a href="http://localhost:8080/posts/<%=post.id%>">See in Detail</a></div>
+      <div class="animated-button1" ><a href="http://localhost:8080/posts/<%=post.id%>/edit">Edit</a></div> 
+      <br>
+      <br>
+      <form method="post" action="/posts/<%=post.id%>?_method=Delete">
+        <button>Delete</button>
+      </form>
+      
     </div>
     <% } %>
     <br>
     <br>
-    <a href="http://localhost:8080/posts/new">Create New Post</a>
+    <div class="animated-button2" ><a href="http://localhost:8080/posts/new">Create New Post</a></div>
   </body>
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Posts</title>
+  <link rel="stylesheet" href="/style.css" />
+
+</head>
+
+<body>
+  <h1>Quora Posts</h1>
+  <div class="animated-button2"><a href="http://localhost:8080/posts/new">Create New Post</a></div>
+  <div class="grid-container">
+
+
+    <% for(post of posts){ %>
+      <div class="post grid-items">
+        <div class="content">
+          <h3 class="username">@<%= post.username %>
+          </h3>
+          <h4 class="content">
+            <%= post.content %>
+          </h4>
+
+          <div class="animated-button1"><a href="http://localhost:8080/posts/<%=post.id%>">See in Detail</a></div>
+          <div class="animated-button1"><a href="http://localhost:8080/posts/<%=post.id%>/edit">Edit</a></div>
+          <br>
+          <form method="post" action="/posts/<%=post.id%>?_method=Delete">
+            <button>Delete</button>
+          </form>
+        </div>
+      </div>
+      <% } %>
+  </div> -->
+
+
+</body>
+
 </html>

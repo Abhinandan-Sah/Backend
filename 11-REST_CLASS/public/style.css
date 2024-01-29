@@ -4,12 +4,103 @@
 
 h1{
     color: maroon;
+    display: inline;
+    margin-right: 1rem;
+    text-decoration: underline;
 }
 
 .post{
-    background-color:blanchedalmond
+    background-color:blanchedalmond;
 }
 
 .username{
     font-style: italic;
 }
+
+.post h3{
+    margin-top: 1rem;
+    text-decoration: underline;
+    
+}
+.post .no-underline{
+    text-decoration: none !important;
+}
+
+.animated-button1{
+    display: inline;
+    background-color: rgb(196, 24, 24);
+    padding: 0.1rem;
+    text-decoration: none;
+    object-fit: cover;
+    border: 1px solid maroon;
+}
+
+ a{
+    text-decoration: none;
+    color: white;
+}
+
+.animated-button1:hover{
+    background-color: maroon;
+    transition-duration: 850ms;
+    transition-timing-function: linear;
+}
+
+.animated-button2{
+    display: inline;
+    background-color: rgb(24, 196, 99);
+    padding: 0.4rem;
+    text-decoration: none;
+    object-fit: cover;
+    border: 1px solid maroon;
+}
+
+.animated-button2:hover{
+    background-color: green;
+    transition-duration: 1s;
+    transition-timing-function: linear;
+}
+
+
+/* Grid-Styling */
+.grid-container{
+    display: grid;
+    /* background-color: orangered; */
+    grid-template-rows: 250px 250px 250px ;
+    grid-template-columns: auto auto auto auto;
+    column-gap : 15px;
+    row-gap: 20px;
+    /* max-width: 1000px;*/
+    /* overflow: auto; */
+    /* height: 100vh;  */
+    margin: 1rem;
+    
+}
+
+
+
+body{
+    overflow-x: hidden;
+    background: #bdc3c7;  /* fallback for old browsers */
+    /* background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);  /* Chrome 10-25, Safari 5.1-6 */
+    /* background: linear-gradient(to right, #2c3e50, #bdc3c7); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.grid-item{
+    background-color: orange;
+    border: 2px solid black;
+    border-radius: 1rem;
+    grid-auto-flow: row;
+    
+}
+.grid-item:hover{
+    transform: scale(1.06);
+    transition-duration: 800ms;
+}
+/* .grid-item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1rem;
+    border: 1px solid black;
+} */
