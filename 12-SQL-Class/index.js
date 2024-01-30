@@ -6,8 +6,8 @@ const mysql = require('mysql2');
 const connection = mysql.createConnection({
     host: 'localhost', 
     user: 'root', 
-    database: 'aviDB', 
-    password: 'mysql@123'
+    database: 'avidb', 
+    password: '12345678',
 });
 
 
@@ -19,6 +19,8 @@ try {
 } catch (err) {
   console.log(err);
 }
+
+connection.end();
 
 let getRandomUser = () =>{
     return {
