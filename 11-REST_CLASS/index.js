@@ -17,18 +17,18 @@ app.use(express.static(path.join(__dirname, "public")));
 let posts = [
     {
         id : uuidv4(),
-        username : "AbhinandanSah",
-        content : "I believe in Bhagwan"
+        username : "Abhinandan",
+        content : "Eat, Code & Sleep"
     },
     {
         id : uuidv4(),
-        username : "Harish",
+        username : "Yuvraj",
         content : "I love working with data"
     },
     {
         id : uuidv4(),
-        username : "goldy",
-        content : "DevOps is my heart" 
+        username : "Twitter",
+        content : "I show recent tweets." 
     }
 ];
 

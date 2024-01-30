@@ -9,6 +9,7 @@
   "author": "Avi",
   "license": "ISC",
   "dependencies": {
-    "@faker-js/faker": "^8.4.0"
+    "@faker-js/faker": "^8.4.0",
+    "mysql2": "^3.9.1"
   }
 }
