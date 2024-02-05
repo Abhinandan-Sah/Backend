@@ -50,27 +50,43 @@ let getRandomUser = () =>{
 
 
 
-app.get("/",(req, res)=>{
-    let q = `SELECT count(*) FROM user`;
-    try{
-      connection.query(q,(err, result)=>{
-        if(err) throw err;
-        console.log(result[0]);
-        res.send(result[0]);
-      });
-    }
-    catch(err){
-      console.log(err);
-      res.send("Error has occur");
-    }
-    
-});
+// app.get("/",(req, res)=>{
+//     let q = `SELECT count(*) FROM user`;
+//     try{
+//       connection.query(q,(err, result)=>{
+//         if(err) throw err;
+//         console.log(result[0]);
+//         res.send(result[0]);
+//       });
+//     }
+//     catch(err){
+//       console.log(err);
+//       res.send("Error has occur");
+//     }
+// });
 
-connection.end();
+
+// connection.end();
+
+app.get("/", (req, res)=>{
+  let q = `SELECT count(*) FROM user;`
+  try{
+    connection.query(q, (err, result) =>{
+      if (err) throw err;
+      console.log(result[0]["count(*)"]);
+      res.send(result[0]);
+    } );
+  }
+  catch(err){
+    console.log(err);
+    res.send("some error in DB");
+  }
+  
+});
 
 app.listen("8080", ()=>{
   console.log("App is listening of port 8080");
-})
+});
 
 
 
