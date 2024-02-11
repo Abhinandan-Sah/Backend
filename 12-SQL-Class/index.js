@@ -123,8 +123,82 @@ app.get("/user/:id/edit", (req, res) =>{
 
 //UPDATE (DB) Route
 app.patch("/user/:id", (req, res)=>{
-    res.send("Updated");
+    // res.send("Updated");
+    let {id} = req.params;
+    let {password: formPass, username: newUsername} = req.body;
+    let q= `SELECT * FROM user WHERE id = '${id}'`;
+    try{
+      connection. query(q, (err, result) => {
+        if(err) throw err;
+        let user = result[0];
+        if(formPass != user.password){
+          res.send("WRONG Password");
+        }else{
+          let q2 = `UPDATE user SET username = '${newUsername}' WHERE id = '${id}'`;
+          connection.query(q2, (err, result) =>{
+            if(err) throw err;
+            res.redirect("/user");
+            
+          });
+        }
+        // res.send(user);
+      });
+    }
+    catch(err){
+      console.log(err);
+      res.send("some error in DB");
+    }
 });
+
+//Redirecting to delete webpage
+app.get("/user/:id/delete", (req, res) =>{
+  let {id} = req.params;
+  let q = `SELECT * FROM user WHERE id = '${id}'`;
+  try{
+    connection.query(q, (err, result)=>{
+      if(err) throw err;
+      console.log(result[0]);
+      let user = result[0];
+      res.render("delete.ejs", {user});
+    });
+  }
+  catch(err){
+    console.log(err);
+    res.send("Some error in DB");
+  }
+  
+});
+
+//Deleting user from database
+app.delete("/user/:id", (req, res)=>{
+  // res.send("Updated");
+  let {id} = req.params;
+  let {password: formPass, username: newUsername} = req.body;
+  let q= `SELECT * FROM user WHERE id = '${id}'`;
+  try{
+    connection. query(q, (err, result) => {
+      if(err) throw err;
+      let user = result[0];
+      if(formPass != user.password){
+        res.send("WRONG Password");
+      }else{
+        let q2 = `DELETE FROM user WHERE id = '${id}';`;
+        connection.query(q2, (err, result) =>{
+          if(err) throw err;
+          res.redirect("/user");
+          
+        });
+      }
+      // res.send(user);
+    });
+  }
+  catch(err){
+    console.log(err);
+    res.send("some error in DB");
+  }
+});
+
+
 
 app.listen("8080", ()=>{
   console.log("App is listening of port 8080");
@@ -140,7 +214,5 @@ app.listen("8080", ()=>{
 //       password: faker.internet.password(),
 //     };
 //   };
-
-
-
+ 
   // console.log(getRandomUser());
