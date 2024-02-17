@@ -65,7 +65,7 @@ app.patch("/posts/:id", (req, res) => {
     post.content = newContent;
     console.log(post);
     // res.send("Patch request working");
-    res.redirect("/posts");
+   res.redirect("/posts");
 });
 
 app.get("/posts/:id/edit", (req, res) => {
