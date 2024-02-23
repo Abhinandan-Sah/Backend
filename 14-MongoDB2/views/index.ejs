@@ -26,8 +26,10 @@
 </head>
 <body>
     <h3>All Chats!</h3>
-
-
+    <form method="GET" action="/chats/new">
+        <button>Create New Chat</button>
+    </form>
+    <br>
     <% for(let chat of chats){ %>
    <div class="parent">
     <div class="card">
@@ -49,10 +51,19 @@
         <div class="content">
             
            
-               
-                    <span class="title">From: <%= chat.from %></span>
-                <span class="text">Message: <%= chat.msg %></span>
-                <span class="title">From: <%= chat.to %></span>
+               <p><%= chat.created_at.toString().split(" ")[4] %></p><br>
+               <p><%= chat.created_at.toString().split(" ").slice(0,4).join(" ") %></p>
+                <span class="title">From: <%= chat.from %></span>
+                <span class="text">
+                    Message: <%= chat.msg %> <br>
+                    <form  method="GET" action="/chats/<%= chat._id %>/edit" style="display: inline;">
+                    <button>Edit</button>
+                    </form>
+                    <form method="POST" action="/chats/<%= chat._id %>?_method=DELETE" style="display: inline;">
+                    <button>Delete</button>
+                    </form>
+                </span>
+                <span class="title2">From: <%= chat.to %></span>
                 
            
         </div>

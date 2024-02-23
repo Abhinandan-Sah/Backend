@@ -1,5 +1,6 @@
 body{
     margin-left: 20px;
+    background-color: rgb(51, 106, 88);
 }
 
 /* .chat{
@@ -54,20 +55,37 @@ body{
   .content {
     padding: 100px 60px 0px 30px;
     transform: translate3d(0, 0, 26px);
+
   }
   
+  .content p {
+    display: block;
+    color: #00894d;
+    /* font-weight: 900; */
+    font-size: 15px;
+    margin-top: -2rem;
+  }
   .content .title {
     display: block;
     color: #00894d;
     font-weight: 900;
     font-size: 20px;
+    margin-top: -7px;
+  }
+  .content .title2 {
+    display: block;
+    color: #00894d;
+    font-weight: 900;
+    font-size: 20px;
+    margin-top: 5px;
   }
   
   .content .text {
     display: block;
-    color: rgba(0, 137, 78, 0.7647058824);
-    font-size: 15px;
-    margin-top: 20px;
+    /* color: rgba(0, 137, 78, 0.7647058824); */
+    color: black;
+    font-size: 20px;
+    margin: 15px 0;
   }
   
   .bottom {
@@ -81,6 +99,7 @@ body{
     align-items: center;
     justify-content: space-between;
     transform: translate3d(0, 0, 26px);
+    margin-top: 10px;
   }
   
   .bottom .view-more {
@@ -114,6 +133,7 @@ body{
     display: flex;
     gap: 10px;
     transform-style: preserve-3d;
+
   }
   
   .bottom .social-buttons-container .social-button {
