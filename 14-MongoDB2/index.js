@@ -102,7 +102,7 @@ app.get("/chats/new", (req, res) =>{
 app.get("/", (req, res) =>{
     res.send("Connection Established");
 })
-
+//It is a server for listening request form client site.
 app.listen(8080, () =>{
     console.log("server is listening on port 8080");
 })
