@@ -1,11 +1,12 @@
 const express = require("express");
 const app = express();
+const ExpressError = require("./ExpressError");
 
 // app.use((req, res, next)=>{
 //     console.log("Hi I am 1st middleware");
 //     console.log("accepting request");
 //     return next();
-//     console.log("after next()");
+//     throw new Error("ACCESS DENIED!");
 // });
 
 // app.use((req, res, next)=>{
@@ -43,7 +44,8 @@ const checkToken = (req, res, next)=>{
     if(token=="giveaccess"){  //you can access this /api path by http://localhost:8080/api?token=giveaccess
         next();
     }else {
-        res.status(401).send("ACCESS DENIED!");
+        // res.status(401).send("ACCESS DENIED!");
+        throw new ExpressError(401,"ACCESS DENIED!");
     }
 };
 
@@ -64,6 +66,13 @@ app.use((req, res) =>{
     res.status(404).send("Page not found!");
 });
 
+app.use((err, req, res, next)=>{
+    let {status, message} = err;
+    res.status(status).send(message);
+})
+
 app.listen(8080, ()=>{
     console.log("Server is listening to port 8080");
 });
+
+
