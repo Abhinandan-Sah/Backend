@@ -4,6 +4,7 @@ const app = express();
 const path = require("path");
 const Chat = require("./models/chat.js");
 const methodOverride = require("method-override");
+const { nextTick } = require("process");
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -35,23 +36,24 @@ async function main(){
 // })
 
 //create Route
-app.post("/chats", (req, res)=>{
-    let {from, msg, to }= req.body;
+app.post("/chats", async (req, res, next)=>{
+    try{
+        let {from, msg, to }= req.body;
     let newChat= new Chat({
         from: from,
         to: to,
         msg: msg,
         created_at: new Date()
-    })
-    newChat
-    .save().then((res) =>{
-        console.log("chat was saved");
-    })
-    .catch((err) =>{
-        console.log(err);
-    })
+    });
     
+    await newChat.save();
+    console.log("Chat was saved");
     res.redirect("/chats");
+    }
+    catch(err){
+        next(err);
+    }
+    
 });
 
 //Destroy Route
@@ -102,7 +104,13 @@ app.get("/chats/new", (req, res) =>{
 app.get("/", (req, res) =>{
     res.send("Connection Established");
 })
-//It is a server for listening request form client site.
+
+app.use((err, req, res, next)=>{
+    let {status=500, message="Some error occured"} = err;
+    res.status(status).send(message);
+});
+
+//It is a server for listening request form client site. 
 app.listen(8080, () =>{
     console.log("server is listening on port 8080");
 })
