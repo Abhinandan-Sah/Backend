@@ -60,6 +60,12 @@ app.get("/", (req, res)=>{
 app.get("/random", (req, res)=>{
     res.send("This is a random page");
 });
+app.get("/err", (req, res)=>{
+    abcd=abcd;
+});
+app.get("/admin", (req, res)=>{
+    throw new ExpressError(403, "Access to Admin is forbidded")
+});
 
 //404 if there is not any page which the user have search
 app.use((req, res) =>{
@@ -67,7 +73,7 @@ app.use((req, res) =>{
 });
 
 app.use((err, req, res, next)=>{
-    let {status, message} = err;
+    let {status=500, message="Some error occured"} = err;
     res.status(status).send(message);
 })
 
