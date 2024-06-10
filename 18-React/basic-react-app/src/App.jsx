@@ -1,12 +1,11 @@
 import './App.css'
-import Title from './Title';
-import Product from './product';
 import ProductTab from './ProductTab';
 
 function App() {
 
   return (
     <>
+    <h2>Diwali Dhamaka Sells | Shop Now</h2>
       <ProductTab/>
 
     </>
