@@ -1,6 +1,6 @@
 export default function Price({oldPrice, newPrice}){
     let oldStyles = {
-        textDecorationLine: "line-through"
+        textDecorationLine: "line-through",
     }
     let newStyles = {
         fontWeight: "bold",
