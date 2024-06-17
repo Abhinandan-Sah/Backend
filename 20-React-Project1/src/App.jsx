@@ -1,7 +1,8 @@
 import './App.css'
 import Lottery from './Lottery'
 import { ToDoList } from './ToDoList'
-
+import TicketNum from './TicketNum'
+import Ticket from './Ticket'
 function App() {
 
   return (
@@ -11,8 +12,9 @@ function App() {
 
 
         {/* <ToDoList/> */}
-        <Lottery />
-
+        {/* <Lottery /> */}
+        
+        <Ticket ticket={[0, 1, 2]} />
 
     </>
   )
