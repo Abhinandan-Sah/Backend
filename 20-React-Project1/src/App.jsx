@@ -3,6 +3,7 @@ import Lottery from './Lottery'
 import { ToDoList } from './ToDoList'
 import TicketNum from './TicketNum'
 import Ticket from './Ticket'
+import Joker from './Joker.jsx'
 function App() {
 
   return (
@@ -12,9 +13,11 @@ function App() {
 
 
         {/* <ToDoList/> */}
-        {/* <Lottery /> */}
+        {/* <Lottery n={3} winningSum={15}/> */}
         
-        <Ticket ticket={[0, 1, 2]} />
+        {/* <Ticket ticket={[0, 1, 2]} /> */}
+
+        <Joker />
 
     </>
   )
